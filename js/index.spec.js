@@ -76,16 +76,16 @@ describe('Ejercicios asincronía', function () {
 })
 describe('Ejercicio 2 - API gitHub', function () {
     it('La función busca usuarios correctamente en la API de gitHub', async function () {
-        await expect((await getGitHubUserProfile("Alenriquez96")).name).toEqual("Alberto Enríquez")
+        await expect((await getGitHubUserProfile("Alenriquez96")).name).toEqual("Alberto Enríquez");
     })
     it('Se ha creado un input de tipo texto', function () {
         expect(document.querySelectorAll("input[type=text]").length).toBeGreaterThan(0);
     })
     it('Se ha creado un botón', function () {
-        expect(document.querySelectorAll('button').length).toBeGreaterThan(0)
+        expect(document.querySelectorAll('button').length).toBeGreaterThan(0);
     })
     it('Se pinta el nombre del usuario',function(){
-        expect()
+        expect(document.querySelector("*"))
     })
     it('Se pinta el número de repositorios',function(){})
     it('Se pinta el avatar del usuario',function(){})
