@@ -23,13 +23,14 @@ En esta ocasión, el bikram se dividirá en :crossed_swords: Pair Programming :c
 
 - [ ] 3.- Declara una función **getAllImagesForBreed** que obtenga todas las imágenes de una raza.
 
-- [ ] 4.- 
+- [ ] 4.- Declara una funcion **getAllImagesForBreed2** que devuelva las imágenes de la raza pasada por el argumento
 
 ### GitHub API (I) - ¿Quieres saber mi información? Aquí la tienes ###
 
 - [ ] 5.- Declarara una función **getGitHubUserProfile** que obtenga el perfil de usuario de github a partir de su nombre de usuario. (https://api.github.com/users/{username}).
 
-- [ ] 6.- Crea un input de tipo texto, y un botón buscar. El usuario escribirá en el input el nombre de usuario de GitHub que quiera buscar. Después crearemos una función **getAndPrintGitHubUserProfile** que se ejecute cuando se pulse el botón buscar y que contenga una petición a la API para obtener información de ese usuario y así mostrarla en nuestra página. Deberá imprimir por consola el nombre del usuario, su número de repos y su imagen avatar. 
+- [ ] 6.- Crea un input de tipo texto, y un botón buscar. El usuario escribirá en el input el nombre de usuario de GitHub que quiera buscar. Después crearemos una función **getAndPrintGitHubUserProfile** que se ejecute cuando se pulse el botón buscar y que contenga una petición a la API para obtener información de ese usuario y así mostrarla en nuestra página. 
+Deberá imprimir por consola el nombre del usuario, su número de repos y su imagen avatar, y se deberán mostrar en el DOM, todo dentro de un contenedor con la clase 'profileInfo'.
 
 ### GitHub API (II)- Promesas, promesas y más promesas ###
 

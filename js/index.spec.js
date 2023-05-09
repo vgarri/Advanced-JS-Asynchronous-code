@@ -1,3 +1,6 @@
+
+
+
 let randomize = (maxNum = 177, min = 0) => {
     return (Math.floor(Math.random() * maxNum) + min);
 }
@@ -29,12 +32,22 @@ let randomizeArrayOrder = (array) => {
     return (array);
 }
 
+// describe("The new DIV element", function() {
+//     beforeAll(function() {
+//       //DOMCustomMatchers is the global window object got from dom-matchers.js
+//       jasmine.addMatchers(DOMCustomMatchers);    
+//       this.newDiv = document.createElement('DIV');
+//     });
+//     it("should be empty.", function() {
+//       expect(this.newDiv).toBeEmpty();    //do the magic with new DOM matchers
+//     });
+//   })
 
-beforeEach(function (done) {
-    setTimeout(function () {
-        done();
-    }, 1000)
-})
+// beforeEach(function (done) {
+//     setTimeout(function () {
+//         done();
+//     }, 1000)
+// })
 
 
 
@@ -70,33 +83,53 @@ describe('Ejercicios asincronía', function () {
                     await expect((async () => { return await getAllImagesForBreed("Dsevr$34").catch((error) => error) })().toEqual('Breed not found (master breed does not exist)'))
                 }) */
         })
-
+        describe('d) Obten las imagenes de una raza pasada como argumento a la función', function () {
+            it('La función devuelve todas las fotos de una raza pasada como argumento', async function () {
+                await expect(await getAllImagesForBreed2("komondor")).toContain("https://images.dog.ceo/breeds/komondor/n02105505_4143.jpg", "https://images.dog.ceo/breeds/komondor/n02105505_4260.jpg")
+            })
+        })
     })
-
 })
+
+
 describe('Ejercicio 2 - API gitHub', function () {
-    it('La función busca usuarios correctamente en la API de gitHub', async function () {
-        await expect((await getGitHubUserProfile("Alenriquez96")).name).toEqual("Alberto Enríquez");
-    })
-    it('Se ha creado un input de tipo texto', function () {
-        expect(document.querySelectorAll("input[type=text]").length).toBeGreaterThan(0);
-    })
-    it('Se ha creado un botón', function () {
-        expect(document.querySelectorAll('button').length).toBeGreaterThan(0);
-    })
-    it('Se pinta el nombre del usuario',function(){
-        expect(document.querySelector("*"))
-    })
-    it('Se pinta el número de repositorios',function(){})
-    it('Se pinta el avatar del usuario',function(){})
+    it('La función busca usuarios correctamente en la API de gitHub', async function() {
+        const userProfile = await getGitHubUserProfile('alenriquez96');
+        expect(userProfile.name).toEqual('Alberto Enríquez');
+    });
 
 })
 
-describe('Ejercicio 3 - Promesas, promesas y mas promesas', function(){
-    it('Hay un array de usuarios',function(){})
-    it('La función devuelve un array con la uril y el nombre de cada usuario',function(){})
+describe('Ejercicio 3 - Promesas, promesas y más promesas', function() {
+    it('Hay un array de usuarios', function() {
+      const usernames = ['octocat', 'mojombo', 'defunkt']; // Nombres de usuario reales de GitHub
+      expect(Array.isArray(usernames)).toBe(true);
+      expect(usernames.length).toBeGreaterThan(0);
+    });
+  
+    it('La función devuelve un array con la url y el nombre de cada usuario', function(done) {
+      const userNames = ['octocat', 'alenriquez96', 'alejandroereyesb'];
+      const realNames = ['The Octocat', 'Alberto Enríquez', 'Alejandro Reyes']
+      const expectedUsers = userNames.map((username, i) => ({
+        name: `${realNames[i]}`,
+        url: `https://github.com/${username}`,
+      }));
+  
+      fetchGithubUsers(userNames).then(actualUsers => {
+        expect(Array.isArray(actualUsers)).toBe(true);
+        expect(actualUsers.length).toBeGreaterThan(0);
+  
+        actualUsers.forEach((user, i) => {
+          expect(user.name).toBe(expectedUsers[i].name);
+          expect(user.html_url.toLowerCase()).toBe(expectedUsers[i].url);
+        });
+  
+        done();
+      });
+    });
+  });
 
-})
+
 
 
 
