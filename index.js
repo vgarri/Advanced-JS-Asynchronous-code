@@ -1,3 +1,4 @@
+
 async function getAllBreeds() {
     return fetch("https://dog.ceo/api/breeds/list/all")
         .then(response => response.json())
@@ -128,6 +129,7 @@ async function getGitHubUserProfile(username) {
     console.log(data);
     return data;
 }
+
 
 
 
