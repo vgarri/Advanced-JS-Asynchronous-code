@@ -29,12 +29,14 @@ En esta ocasión, el bikram se dividirá en :crossed_swords: Pair Programming :c
 
 - [ ] 5.- Declarara una función **getGitHubUserProfile** que obtenga el perfil de usuario de github a partir de su nombre de usuario. (https://api.github.com/users/{username}).
 
-- [ ] 6.- Crea un input de tipo texto, y un botón buscar. El usuario escribirá en el input el nombre de usuario de GitHub que quiera buscar. Después crearemos una función **getAndPrintGitHubUserProfile** que se ejecute cuando se pulse el botón buscar y que contenga una petición a la API para obtener información de ese usuario y así mostrarla en nuestra página. 
-Deberá imprimir por consola el nombre del usuario, su número de repos y su imagen avatar, y se deberán mostrar en el DOM, todo dentro de un contenedor con la clase 'profileInfo'.
+- [ ] 6.- Declara una función **printGithubUserProfile** que reciba como argumento el nombre de un usuario (username), retorne {img, name} y pinte la foto y el nombre en el DOM.
+
+- [ ] 7.- Crea un input de tipo texto, y un botón buscar. El usuario escribirá en el input el nombre de usuario de GitHub que quiera buscar. Después crearemos una función **getAndPrintGitHubUserProfile** que se ejecute cuando se pulse el botón buscar y que contenga una petición a la API para obtener información de ese usuario y así mostrarla en nuestra página. 
+Deberá imprimir por consola el nombre del usuario, su número de repos y su imagen avatar, y se deberán mostrar en el DOM.
 
 ### GitHub API (II)- Promesas, promesas y más promesas ###
 
-- [ ] 7.- Dada una lista de usuarios de github guardada en una array, utiliza 'https://api.github.com/users/${name}' para obtener el nombre de cada usuario. \
+- [ ] 8.- Dada una lista de usuarios de github guardada en una array, utiliza 'https://api.github.com/users/${name}' para obtener el nombre de cada usuario. \
 Objetivo: Usar Promise.all()\
 Recordatorio: Una llamada a fetch() devuelve un objeto promesa.\
 Pregunta. ¿cuántas promesas tendremos?
