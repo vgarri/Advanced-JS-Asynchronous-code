@@ -33,18 +33,20 @@ En esta ocasión, el bikram se dividirá en :crossed_swords: Pair Programming :c
 
 - [ ] 7. Crea una función **getAndPrintGitHubUserProfile(username)** que contenga una petición a la API para obtener información de ese usuario y devuelva un string que represente una tarjeta HTML como en el ejemplo, la estructura debe ser exactamente la misma:
 
-`<section>
+```html
+<section>
     <img src="url de imagen" alt="imagen de usuario">
     <h1>Nombre de usuario</h1>
     <p>Public repos: (número de repos)</p>
-</section>`
+</section>
+```
 
 - [ ] 8.- Manipulación del DOM: Crea un input de tipo texto, y un botón buscar. El usuario escribirá en el input el nombre de usuario de GitHub que quiera buscar. Después llamaremos a la función **getAndPrintGitHubUserProfile(username)** que se ejecute cuando se pulse el botón buscar.(Esto no se testea).
 
 
 ### GitHub API (II)- Promesas, promesas y más promesas ###
 
-- [ ] 8.- Dada una lista de usuarios de github guardada en una array,crea una funcion **fetchGithubUsers(userNames)** que utilice 'https://api.github.com/users/${name}' para obtener el nombre de cada usuario. \
+- [ ] 9.- Dada una lista de usuarios de github guardada en una array,crea una funcion **fetchGithubUsers(userNames)** que utilice 'https://api.github.com/users/${name}' para obtener el nombre de cada usuario. \
 Objetivo: Usar Promise.all()\
 Recordatorio: Una llamada a fetch() devuelve un objeto promesa.\
 Pregunta. ¿cuántas promesas tendremos?
