@@ -75,7 +75,7 @@ describe('Ejercicios asincronía', function () {
         })
         describe('c) Obten todas las imágenes de una raza ', function () {
             it('La función devuelve todas las fotos de una raza', async function () {
-                await expect(await getAllImagesForBreed("komondor")).toContain("https://images.dog.ceo/breeds/komondor/n02105505_4143.jpg", "https://images.dog.ceo/breeds/komondor/n02105505_4260.jpg")
+                await expect(await getAllImagesByBreed("komondor")).toContain("https://images.dog.ceo/breeds/komondor/n02105505_4143.jpg", "https://images.dog.ceo/breeds/komondor/n02105505_4260.jpg")
 
 
             })
@@ -85,49 +85,62 @@ describe('Ejercicios asincronía', function () {
         })
         describe('d) Obten las imagenes de una raza pasada como argumento a la función', function () {
             it('La función devuelve todas las fotos de una raza pasada como argumento', async function () {
-                await expect(await getAllImagesForBreed2("komondor")).toContain("https://images.dog.ceo/breeds/komondor/n02105505_4143.jpg", "https://images.dog.ceo/breeds/komondor/n02105505_4260.jpg")
+                await expect(await getAllImagesByBreed2("komondor")).toContain("https://images.dog.ceo/breeds/komondor/n02105505_4143.jpg", "https://images.dog.ceo/breeds/komondor/n02105505_4260.jpg")
             })
         })
     })
-})
 
-
-describe('Ejercicio 2 - API gitHub', function () {
-    it('La función busca usuarios correctamente en la API de gitHub', async function() {
-        const userProfile = await getGitHubUserProfile('alenriquez96');
-        expect(userProfile.name).toEqual('Alberto Enríquez');
-    });
-
-})
-
-describe('Ejercicio 3 - Promesas, promesas y más promesas', function() {
-    it('Hay un array de usuarios', function() {
-      const usernames = ['octocat', 'mojombo', 'defunkt']; // Nombres de usuario reales de GitHub
-      expect(Array.isArray(usernames)).toBe(true);
-      expect(usernames.length).toBeGreaterThan(0);
-    });
-  
-    it('La función devuelve un array con la url y el nombre de cada usuario', function(done) {
-      const userNames = ['octocat', 'alenriquez96', 'alejandroereyesb'];
-      const realNames = ['The Octocat', 'Alberto Enríquez', 'Alejandro Reyes']
-      const expectedUsers = userNames.map((username, i) => ({
-        name: `${realNames[i]}`,
-        url: `https://github.com/${username}`,
-      }));
-  
-      fetchGithubUsers(userNames).then(actualUsers => {
-        expect(Array.isArray(actualUsers)).toBe(true);
-        expect(actualUsers.length).toBeGreaterThan(0);
-  
-        actualUsers.forEach((user, i) => {
-          expect(user.name).toBe(expectedUsers[i].name);
-          expect(user.html_url.toLowerCase()).toBe(expectedUsers[i].url);
+    describe('Ejercicio 2 - API gitHub', function () {
+        it('La función busca usuarios correctamente en la API de gitHub', async function () {
+            const userProfile = await getGitHubUserProfile('alenriquez96');
+            expect(userProfile.name).toEqual('Alberto Enríquez');
         });
-  
-        done();
-      });
-    });
-  });
+
+        it('La función pinta la info del usuario', async function () {
+            const response = await printGithubUserProfile('alenriquez96');
+            expect(response.img.src).toContain('https://avatars.githubusercontent.com/u/');
+            expect(response.name).toEqual('Alberto Enríquez');
+        });
+
+        it('La función devuelve una tarjeta con la info del usuario ', async function () {
+            const response = await getAndPrintGitHubUserProfile('alenriquez96');
+            expect(response).toContain(`<section>
+            <img src="${response.url_avatar}" alt="${response.name}">
+            <h1>${response.name}</h1>
+            <p>Public repos: ${response.public_repos}</p>
+        </section>`)
+        })
+    })
+
+
+        describe('Ejercicio 3 - Promesas, promesas y más promesas', function () {
+            it('La función devuelve un array con la url y el nombre de cada usuario', function (done) {
+                const userNames = ['octocat', 'alenriquez96', 'alejandroereyesb'];
+                const realNames = ['The Octocat', 'Alberto Enríquez', 'Alejandro Reyes']
+                const expectedUsers = userNames.map((username, i) => ({
+                    name: `${realNames[i]}`,
+                    url: `https://github.com/${username}`,
+                }));
+
+                fetchGithubUsers(userNames).then(actualUsers => {
+                    expect(Array.isArray(actualUsers)).toBe(true);
+                    expect(actualUsers.length).toBeGreaterThan(0);
+
+                    actualUsers.forEach((user, i) => {
+                        expect(user.name).toBe(expectedUsers[i].name);
+                        expect(user.html_url.toLowerCase()).toBe(expectedUsers[i].url);
+                    });
+
+                    done();
+                });
+            });
+        });
+
+    
+    })
+
+
+
 
 
 
