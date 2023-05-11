@@ -1,6 +1,3 @@
-
-
-
 let randomize = (maxNum = 177, min = 0) => {
     return (Math.floor(Math.random() * maxNum) + min);
 }
@@ -32,26 +29,6 @@ let randomizeArrayOrder = (array) => {
     return (array);
 }
 
-// describe("The new DIV element", function() {
-//     beforeAll(function() {
-//       //DOMCustomMatchers is the global window object got from dom-matchers.js
-//       jasmine.addMatchers(DOMCustomMatchers);    
-//       this.newDiv = document.createElement('DIV');
-//     });
-//     it("should be empty.", function() {
-//       expect(this.newDiv).toBeEmpty();    //do the magic with new DOM matchers
-//     });
-//   })
-
-// beforeEach(function (done) {
-//     setTimeout(function () {
-//         done();
-//     }, 1000)
-// })
-
-
-
-
 
 describe('Ejercicios asincronía', function () {
     describe('Ejercicio 1', function () {
@@ -61,8 +38,6 @@ describe('Ejercicios asincronía', function () {
                 expect((await getAllBreeds()).length).toEqual(98);
                 expect(await getAllBreeds()).toContain('affenpinscher', 'african', 'airedale', 'akita', 'appenzeller', 'australian', 'basenji', 'beagle', 'bluetick', 'borzoi', 'bouvier', 'boxer', 'brabancon', 'briard', 'buhund', 'bulldog', 'bullterrier', 'cattledog', 'chihuahua', 'chow', 'clumber', 'cockapoo', 'collie', 'coonhound', 'corgi', 'cotondetulear', 'dachshund', 'dalmatian', 'dane', 'deerhound', 'dhole', 'dingo', 'doberman', 'elkhound', 'entlebucher', 'eskimo', 'finnish', 'frise', 'germanshepherd', 'greyhound', 'groenendael', 'havanese', 'hound', 'husky', 'keeshond', 'kelpie', 'komondor', 'kuvasz', 'labradoodle', 'labrador', 'leonberg', 'lhasa', 'malamute', 'malinois', 'maltese', 'mastiff', 'mexicanhairless', 'mix', 'mountain', 'newfoundland', 'otterhound', 'ovcharka', 'papillon', 'pekinese', 'pembroke', 'pinscher', 'pitbull', 'pointer', 'pomeranian', 'poodle', 'pug', 'puggle', 'pyrenees', 'redbone', 'retriever', 'ridgeback', 'rottweiler', 'saluki', 'samoyed', 'schipperke', 'schnauzer', 'segugio', 'setter', 'sharpei', 'sheepdog', 'shiba', 'shihtzu', 'spaniel', 'spitz', 'springer', 'stbernard', 'terrier', 'tervuren', 'vizsla', 'waterdog', 'weimaraner', 'whippet', 'wolfhound')
             })
-
-
         })
 
         describe('b)  Obten una imagen random de una raza', function () {
@@ -70,7 +45,6 @@ describe('Ejercicios asincronía', function () {
                 expect(await getRandomDog()).toContain("https://images.dog.ceo/breeds")
                 expect(await getRandomDog()).toContain(".jpg");
 
-                //how do I know it is random??
             })
         })
         describe('c) Obten todas las imágenes de una raza ', function () {
@@ -79,9 +53,6 @@ describe('Ejercicios asincronía', function () {
 
 
             })
-            /*     it('La función devuelve error para una raza que no existe', async function () {
-                    await expect((async () => { return await getAllImagesForBreed("Dsevr$34").catch((error) => error) })().toEqual('Breed not found (master breed does not exist)'))
-                }) */
         })
         describe('d) Obten las imagenes de una raza pasada como argumento a la función', function () {
             it('La función devuelve todas las fotos de una raza pasada como argumento', async function () {
@@ -104,11 +75,10 @@ describe('Ejercicios asincronía', function () {
 
         it('La función devuelve una tarjeta con la info del usuario ', async function () {
             const response = await getAndPrintGitHubUserProfile('alenriquez96');
-            expect(response).toContain(`<section>
-            <img src="${response.url_avatar}" alt="${response.name}">
-            <h1>${response.name}</h1>
-            <p>Public repos: ${response.public_repos}</p>
-        </section>`)
+            expect(response).toContain(`<section>`)
+            expect(response).toContain(`<img src="https://avatars.githubusercontent.com/u/98609901?v=4" alt="Alberto Enríquez">`)
+            expect(response).toContain(`<h1>Alberto Enríquez</h1>`)
+            expect(response).toContain(`<p>Public repos: 59</p>`)
         })
     })
 
