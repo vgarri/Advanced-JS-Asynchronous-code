@@ -46,7 +46,7 @@ En esta ocasión, el bikram se dividirá en :crossed_swords: Pair Programming :c
 
 ### GitHub API (II)- Promesas, promesas y más promesas ###
 
-- [ ] 8.- Dada una lista de usuarios de github guardada en una array,crea una funcion **fetchGithubUsers(userNames)** que utilice 'https://api.github.com/users/${name}' para obtener el nombre de cada usuario. \
+- [ ] 9.- Dada una lista de usuarios de github guardada en una array,crea una funcion **fetchGithubUsers(userNames)** que utilice 'https://api.github.com/users/${name}' para obtener el nombre de cada usuario. \
 Objetivo: Usar Promise.all()\
 Recordatorio: Una llamada a fetch() devuelve un objeto promesa.\
 Pregunta. ¿cuántas promesas tendremos?
