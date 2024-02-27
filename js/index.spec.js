@@ -50,7 +50,7 @@ async function getUserReposNumber() {
 
 describe('Ejercicios asincronía', function () {
 
-    describe('Ejercicio 1.- Declara una funcion getAllBreeds que devuelva todas las razas de perro', function () {
+    describe('Ejercicio 1.- Declara una funcion getAllBreeds que devuelva un array de strings con todas las razas de perro', function () {
         it('La función devuelve todas las razas de perro', async function () {
             const breedLength = await getNumberOfBreeds();
             expect(Object.keys(await getAllBreeds()).length).toBe(breedLength);
