@@ -73,28 +73,40 @@ printGithubUserProfile('alenriquez96').then(response => {
 });
 //- [ ] 7. Crea una función **getAndPrintGitHubUserProfile(username)** que contenga una petición a la API para obtener información de ese usuario y devuelva un 
 //string que represente una tarjeta HTML como en el ejemplo, la estructura debe ser exactamente la misma:
-// function getAndprintGithubUserProfile(username) {
-//     let response = {};
-//     fetch(`https://api.github.com/users/${username}`)
-//         .then(res => res.json())
-//         .then(data => {
-//             response = {
-//                 img: data.avatar_url,
-//                 name: data.name
-//             };
-//             const pintarDom = document.querySelector("body");
-//             const img = document.createElement("img");
-//             img.src = response.img;
-//             const lista = document.createElement('li');
-//             lista.textContent = `${response.name}`; //${response.img}: 
-//             pintarDom.appendChild(lista);
-//             pintarDom.appendChild(img);
+function getAndPrintGitHubUserProfile(username) {
+    let perfil = fetch(`https://api.github.com/users/${username}`)
+        .then(res => res.json())
+        .then(data => {
+        let section = document.createElement("section");
+        let img = document.createElement("img")
+        img.setAttribute('src', data.avatar_url)
+        img.setAttribute('alt', `imagen de ${data.name}`);
+        let h1 = document.createElement('h1');
+            h1.textContent = data.name;
 
-//         });
+            let p = document.createElement('p');
+            p.textContent = `Public repos: (${data.public_repos})`
 
-//     return response;
+            document.body.appendChild(section);
+            section.appendChild(img);
+            section.appendChild(h1);
+            section.appendChild(p);
 
-// }
+            return `
+                <section>
+                    <img src="${data.avatar_url}" alt="${data.name}">
+                    <h1>${data.name}</h1>
+                    <p>Public repos: ${data.public_repos}</p>
+                </section>
+            `
+
+        })
+        .catch(err => console.log("MENSAJE DE ERROR: " + err.message));
+
+    return perfil;
+}
+
+
 // /* ```html
 // <section>
 //     <img src="url de imagen" alt="imagen de usuario">
