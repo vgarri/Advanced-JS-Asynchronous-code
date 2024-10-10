@@ -57,11 +57,11 @@ function printGithubUserProfile(username) {
             let name = data.name;
             return { img, name }
         })
-        return response
+    return response
 }
 //aqui se llama a la funcion
 printGithubUserProfile('alenriquez96').then(response => {
-    
+
     const imagen = document.createElement("img");
     imagen.src = response.img;
     imagen.alt = `Avatar de ${response.name}`
@@ -77,11 +77,11 @@ function getAndPrintGitHubUserProfile(username) {
     let perfil = fetch(`https://api.github.com/users/${username}`)
         .then(res => res.json())
         .then(data => {
-        let section = document.createElement("section");
-        let img = document.createElement("img")
-        img.setAttribute('src', data.avatar_url)
-        img.setAttribute('alt', `imagen de ${data.name}`);
-        let h1 = document.createElement('h1');
+            let section = document.createElement("section");
+            let img = document.createElement("img")
+            img.setAttribute('src', data.avatar_url)
+            img.setAttribute('alt', `imagen de ${data.name}`);
+            let h1 = document.createElement('h1');
             h1.textContent = data.name;
 
             let p = document.createElement('p');
@@ -134,7 +134,31 @@ Con Promise.all() harás que se tenga que resolver todo el proceso de peticiones
 Cuando Promise.all() haya terminado: Consigue que se imprima por consola la url del 
 repositorio de cada usuario. Consigue que se imprima por consola el nombre de cada usuario.   */
 
-function fetchGitHubUsers(userNames){
-    let nombre =  getGitHubUserProfile('alenriquez96').then(data => data.name);
-    
+// let userNames = ['octocat', 'alenriquez96', 'alejandroreyesb'];
+
+// function fetchGithubUsers() {
+//     let user = userNames.map(nombre => fetch(`'https://api.github.com/users/${nombre}'`)
+//                                         .then(res => res.json()));
+//     let respuesta = Promise.all(user)
+//         .then(res=> res.json())
+//         .then((data => {
+//            let name = data.name;
+//             let url = data.url
+//             return {name, url}
+//         }))
+//         console.log(respuesta);
+//         return respuesta
+
+// };
+
+// fetchGithubUsers();
+
+function fetchGithubUsers(userNames) {
+    Promise.all(
+        userNames.map(nombre => fetch(`https://api.github.com/users/${nombre}`).then(res => res.json()))
+    ).then(data => {
+        for (let i = 0; i < data.length; i++) {
+            return data[i].name
+        }
+    })
 }
